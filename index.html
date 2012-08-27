@@ -1,98 +1,43 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Simple Radio</title>
-		<meta name="viewport" content="width=720,
-                               maximum-scale=1.0" />
-                               <meta name="apple-mobile-web-app-capable" content="yes" />
-<script type="text/javascript" src="EventEmitter.min.js"></script>
-
-<script type="text/javascript">
-
-	document.ontouchmove = function(e){ e.preventDefault(); }
-
-	/*
-	function getJSON(url, callback)
-	{	
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() 
-		{
-			if(xmlhttp.readyState == 4){
-		    	callback(JSON.parse(xmlhttp.responseText));
-		   	}
-		};
-		
-		xmlhttp.open("GET","http://www.bbc.co.uk/radio4/programmes/schedules/fm.json",true);
-		xmlhttp.send(null);
-	};
-	
-	function getCurrentPlaying(){
-		getJSON('', function(data){
-			console.log(data);
-		});
-		
-		setTimeout("getCurrentPlaying()", 30000);
-	}
-	
-	//getCurrentPlaying();
-*/
-
-	// Initialise the EventEmitter
-	var pubsub = new EventEmitter();
-	
-	// Initialise the listener function
-	function myListener() {
-		alert('The foo event was emitted.');
-	}
-	
-	// Add the listener
-	pubsub.addListener('foo', myListener);
-	
-	// Emit the foo event
-	pubsub.emit('foo'); // The listener function is now called
-	
-	// Remove the listener
-	pubsub.removeListener('foo', myListener);
-	
-	// Log the array of listeners to show that it has been removed
-	//console.log(ee.listeners('foo'));
-	
-	
-	
-</script>
-
-
-
-<style type="text/css">
-
-	* { padding: 0; margin: 0; font-family: Arial;}
-	#selector, #playback, #about { 
-		width: 1024px; height: 100%; position: absolute; background: #1a1a1a; color: #FFF; 
-
-	}
-	
-	#selector li { display: block; float: left; padding: 20px;  margin: 10px; width: 40%; background: #000; height: 450px; text-align: center; }
-
-</style>
-	
+		<title>(very)Simple Radio</title>
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="stylesheet" type="text/css" href="screen.css" />
 	</head>
 <body>
 
-<div id="playback">
-
-	<p>playback</p>
-
-</div>
-
-
-<div id="selector">
+<h1>BBC Simple Radio Player</h1>
+<p>Touch a station to play, touch again to pause.</p>
+<div class="station-list">
 	<ul>
-		<li id="radio1">Radio 1</li>
-		<li>Radio 4</li>
+		<li class="station r1">
+			<a id="r1" href="http://www.bbc.co.uk/radio/listen/live/r1_heaacv2.pls">
+				Play Radio 1
+			</a>
+		</li>
+		
+		<li class="station r2">
+			<a id="r3" href="http://www.bbc.co.uk/radio/listen/live/r2_heaacv2.pls">
+				Play Radio 2
+			</a>
+		</li>
+		
+		<li class="station r3">
+			<a id="r3" href="http://www.bbc.co.uk/radio/listen/live/r3_heaacv2.pls">
+				Play Radio 3
+			</a>
+		</li>
+		
+		<li class="station r4">
+			<a id="r4" href="http://www.bbc.co.uk/radio/listen/live/r4_heaacv2.pls">
+				Play Radio 3
+			</a>
+		</li>
 	</ul>
 
 </div>
-
-
+<script type="text/javascript" src="app.js"></script>
 </body>
 </html>
