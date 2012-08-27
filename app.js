@@ -24,11 +24,13 @@ var radioApp = (function(){
 			playingStation[id] = new Audio(url);
 			playingStation[id].play();
 		}
+		
+		return false;
 	}
 
 	var init = function(){
 		stations = document.getElementsByClassName('station');
-		eventType = (radioApp.hasTouchSupport())? 'ontouchstart' : 'click' ;
+		eventType = (radioApp.hasTouchSupport())? 'touchstart' : 'click' ;
 		for (i=0; i<stations.length; i++)
 		{
 			stations[i].addEventListener(eventType, radioApp.togglePlayback, false);
