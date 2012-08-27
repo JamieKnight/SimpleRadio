@@ -1,6 +1,6 @@
 var radioApp = (function(){
 	var stations, eventType, station,
-	playingStation = [];
+	playingStations = [];
 	
 	var hasTouchSupport = function(){
 	     try {  
@@ -17,12 +17,12 @@ var radioApp = (function(){
 			id = station.id,
 			url = station.href;
 		
-		if(playingStation[id]){
-			playingStation[id].pause();
-			delete playingStation[id];
+		if(playingStations[id]){
+			playingStations[id].pause();
+			delete playingStations[id];
 		}else{
-			playingStation[id] = new Audio(url);
-			playingStation[id].play();
+			playingStations[id] = new Audio(url);
+			playingStations[id].play();
 		}
 		
 		return false;
