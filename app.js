@@ -13,7 +13,7 @@ var radioApp = (function(){
 	
 	var togglePlayback = function(e){
 		e.preventDefault();
-		var station = (e.target);
+		var station = (e.target),
 			id = station.id,
 			url = station.href;
 		
