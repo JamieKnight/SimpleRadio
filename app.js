@@ -11,18 +11,31 @@ var radioApp = (function(){
 	    }
 	}
 	
+	var toggleClass = function(targetClass){
+		console.log('class');
+	}
+	
 	var togglePlayback = function(e){
 		e.preventDefault();
-		var station = (e.target),
+		var station = (e.target);
 			id = station.id,
-			url = station.href;
+			url = station.href,
+			label = station.getElementsByClassName('sta-play-btn');
+		
+		station.parentNode.classList.toggle('sta-playing');
+		
+		
+		
+		
 		
 		if(playingStations[id]){
 			playingStations[id].pause();
 			delete playingStations[id];
+			label[0].innerHTML = "Play";
 		}else{
 			playingStations[id] = new Audio(url);
 			playingStations[id].play();
+			label[0].innerHTML = "Pause";
 		}
 		
 		return false;
@@ -40,7 +53,7 @@ var radioApp = (function(){
 	return {
 		init: init,
 		hasTouchSupport: hasTouchSupport,
-		togglePlayback: togglePlayback
+		togglePlayback: togglePlayback,
 	}
 })();
 
