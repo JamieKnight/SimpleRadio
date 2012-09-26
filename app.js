@@ -70,16 +70,25 @@
         //parse response grab pid and select station in document.
         var response = JSON.parse(data.response);
         var pid = response.schedule.now.broadcast.programme.pid;
-        var station = document.querySelector('#' +response.schedule.service.key + ' .sta-inner');
+        var station_inner = document.querySelector('#' +response.schedule.service.key + ' .sta-inner');
+        var station = document.querySelector('#' +response.schedule.service.key);
         
-        //setup store duration for later
-        nextTxStart[response.schedule.service.key] = response.schedule.now.broadcast.programme.duration;
+        //Update network image every 15 secs.
+        //TODO: Extend this to use now and next data to poll at a smarter frequency or preswap images.
+        setTimeout(function(){ refreshImage(station); }, 15000);
         
         //update UI
-        station.style.backgroundImage = "url('http://static.bbci.co.uk/programmeimages/352x198/episode/" + pid +".jpg?nodefault=true')";
-        station.style.opacity = 1;
+        station_inner.style.backgroundImage = "url('http://static.bbci.co.uk/programmeimages/352x198/episode/" + pid +".jpg?nodefault=true')";
+        station_inner.style.opacity = 1;
     }
-
+    
+    var refreshImage = function(station){
+        sendRequest(station.dataset.upcoming, function(data){
+            updateImage(data);
+        });  
+    }
+    
+   
     var init = function(){
         //setup click events, load live data.
         var stations = document.getElementsByClassName('station');
@@ -89,14 +98,8 @@
         {
             //bind events for playback
             stations[i].addEventListener(eventType, togglePlayback, false);
-            
-            //load now and next data.
-            if(stations[i].dataset.upcoming){
-                sendRequest(stations[i].dataset.upcoming, function(data){
-                    updateImage(data);
-                });
-            }
-        }    
+            refreshImage(stations[i]);
+        }
     }
 
     //kick everything off
