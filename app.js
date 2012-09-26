@@ -6,7 +6,7 @@
     playingStations = [];
     nextTxStart     = []
         
-    function sendRequest(url,callback,postData) {
+    var sendRequest = function(url,callback,postData) {
         var request = new XMLHttpRequest();
         request.open('GET', url, true);
         request.onreadystatechange = function () {
