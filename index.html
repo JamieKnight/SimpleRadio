@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>(very)Simple Radio</title>
+		<title>BBC Radio Touch</title>
 		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="screen.css" />
 	</head>
 <body>
 
-<h1>BBC Simple Radio Player</h1>
+<h1><span class="bbc-blocks">BBC</span>RADIO</h1>
 <p>Touch a station to play, touch again to pause.</p>
 <div class="station-list">
-	<ul>
-		<li class="station r1">
-			<a id="r1" href="http://www.bbc.co.uk/radio/listen/live/r1_heaacv2.pls">
-				Play Radio 1
-			</a>
-		</li>
-		
-		<li class="station r2">
+	<ul>		
+		<li id="radio2" class="station" data-upcoming="http://www.bbc.co.uk/radio2/programmes/schedules/upcoming.json">
+		  <div class="sta-inner">
 			<a id="r2" href="http://www.bbc.co.uk/radio/listen/live/r2_heaacv2.pls">
-				Play Radio 2
+				<img src="bbc_radio_two.png" alt="BBC Radio 2"/>
+				<span class="sta-play-btn">Play</span>
 			</a>
+         </div>
 		</li>
 		
-		<li class="station r3">
+		<li id="radio3" class="station" data-upcoming="http://www.bbc.co.uk/radio3/programmes/schedules/upcoming.json">
+			<div class="sta-inner">
 			<a id="r3" href="http://www.bbc.co.uk/radio/listen/live/r3_heaacv2.pls">
-				Play Radio 3
+				<img src="bbc_radio_three.png" alt="BBC Radio 3"/>
+				<span class="sta-play-btn">Play</span>
 			</a>
+			</div>
 		</li>
 		
-		<li class="station r4">
+		<li id="radio4" class="station" data-upcoming="http://www.bbc.co.uk/radio4/programmes/schedules/fm/upcoming.json">
+            <div class="sta-inner">
 			<a id="r4" href="http://www.bbc.co.uk/radio/listen/live/r4_heaacv2.pls">
-				Play Radio 4
+				<img src="bbc_radio_four.png" alt="BBC Radio 4"/>
+				<span class="sta-play-btn">Play</span>
 			</a>
+            </div>
 		</li>
 	</ul>
-
 </div>
+<p class="notice"><span class="cog">Add or Remove Stations</span></p>
 <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
